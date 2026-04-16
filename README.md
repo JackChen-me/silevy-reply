@@ -35,17 +35,25 @@ The skill maintains a detailed blocklist of phrases and patterns that scream "AI
 - Em dashes in body text
 - "Great question" / "Great catch"
 - "Feel free to..." / "Happy to discuss further"
-- Thank → Answer → Invite three-part structure
+- Thank > Answer > Invite three-part structure
 - Addressing every single point in a reply
 
 ## Installation
 
-Copy `skill.md` to your Claude Code skills directory:
+Two versions available:
+
+- `skill.md` -- English
+- `skill-zh.md` -- Chinese (中文版)
 
 ```bash
 # macOS / Linux
 mkdir -p ~/.claude/skills/silevy-reply
+
+# English version
 cp skill.md ~/.claude/skills/silevy-reply/skill.md
+
+# Or Chinese version (中文版)
+cp skill-zh.md ~/.claude/skills/silevy-reply/skill.md
 ```
 
 Then use it in Claude Code by typing `/silevy-reply` followed by the content you want to reply to.

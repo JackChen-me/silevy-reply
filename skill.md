@@ -1,286 +1,286 @@
 ---
 name: silevy-reply
 description: >
-  跨平台回复/评论拟定。自动路由到对应平台规则（GitHub/Reddit/Twitter/HN/通用）。
-  当用户提到以下场景时使用：回复 issue、回复 PR、github reply、帮我回、写个评论、
-  comment on issue、回复 reddit、reddit reply、帮我回 reddit、分析评论、
-  回复推特、twitter reply、帮我写回复。
+  Cross-platform reply and comment drafting. Auto-routes to platform-specific rules
+  (GitHub/Reddit/Twitter/HN/general). Use when the user mentions: reply to issue,
+  reply to PR, github reply, draft a reply, write a comment, comment on issue,
+  reddit reply, analyze comments, twitter reply, help me respond.
 ---
 
-跨平台回复/评论拟定。根据输入内容自动路由到对应平台规则。
+Cross-platform reply/comment drafting. Auto-routes to the correct platform ruleset based on input.
 
-## 路由
+## Routing
 
-| 输入 | 模式 |
-|------|------|
-| GitHub Issue/PR 编号或链接 | GitHub 模式 |
-| Reddit 评论文本/截图 | Reddit 模式 |
-| Twitter/X 内容 | Twitter 模式 |
-| 其他平台或未指定 | 通用模式（套用通用原则） |
+| Input | Mode |
+|-------|------|
+| GitHub Issue/PR number or link | GitHub mode |
+| Reddit comment text/screenshot | Reddit mode |
+| Twitter/X content | Twitter mode |
+| Other platforms or unspecified | General mode (applies universal principles) |
 
 ---
 
-# 第一部分：通用原则（所有平台共享）
+# Part 1: Universal Principles (Shared Across All Platforms)
 
-## 场景判断（先判断再写）
+## Context Assessment (Judge Before Writing)
 
-| 场景 | 定义 | 核心策略 |
-|------|------|---------|
-| **自己地盘** | 你是 maintainer / 帖主 / 作者 | 交付信息为主 |
-| **别人地盘** | 你是访客 | 先贡献经验，再提问；不自我推销 |
-| **冷启动 DM** | 零关系，主动联系对方 | 引用对方具体内容建立信任 |
+| Context | Definition | Core Strategy |
+|---------|-----------|---------------|
+| **Your turf** | You are the maintainer / OP / author | Deliver information |
+| **Someone else's turf** | You are a visitor | Contribute experience first, then ask; no self-promotion |
+| **Cold DM** | Zero prior relationship, you're reaching out | Reference their specific content to build trust |
 
-### 别人地盘的原则
+### Rules for Someone Else's Turf
 
-- **先贡献再提问。** 分享同类问题或经验，然后自然引出一个问题
-- **一条评论只问一个问题。** 多个问题 = 审讯感
-- **问题必须有明确信息价值。** 发之前能说清"这个回答对我有什么用"，说不清就重写
-- **你的 profile 就是你的介绍。** 不需要在正文里自报家门
-- **不暴露调研动机。** 看起来像"遇到同样问题的人"，不是"竞品 founder 来套信息"
+- **Contribute before asking.** Share a similar problem or experience, then naturally lead into one question
+- **One question per comment.** Multiple questions = interrogation vibes
+- **Every question must have clear information value.** Before posting, articulate "what will this answer tell me?" If you can't, rewrite
+- **Your profile is your introduction.** No need to introduce yourself in the body text
+- **Don't reveal research intent.** Look like "someone who ran into the same problem," not "competing founder mining for intel"
 
-### 冷启动 DM 的原则
+### Rules for Cold DMs
 
-- **引用对方的具体原话。** 太泛的引用 = 低回复率
-- **明确说不是在卖东西**
-- **给对方退出的台阶。** "No worries if not"
-- **async 优先于 call。** 回复率更高
+- **Quote their specific words.** Vague references = low reply rate
+- **Make it clear you're not selling anything**
+- **Give them an easy out.** "No worries if not"
+- **Async over calls.** Higher reply rate
 
-## 发送前检查（4 步，每次必须完成）
+## Pre-Send Checklist (4 Steps, Required Every Time)
 
-1. **意图检查：** 这条评论想拿到什么信息？对我们有什么具体用处？答不出来就重写
-2. **事实核查：** 自己项目的技术声明对照代码验证；引用别人的话对照原文验证
-3. **味道检查：** 以收件人视角重读。像竞品调研？像 AI？还是像遇到同样问题的人自然留言？
-4. **文风检查：** 过一遍禁止项清单
+1. **Intent check:** What information does this comment aim to get? What's the concrete use for us? If you can't answer, rewrite
+2. **Fact check:** Verify your own project's technical claims against code; verify quotes against originals
+3. **Smell check:** Re-read from the recipient's perspective. Does it read like competitive research? Like AI? Or like someone who naturally ran into the same problem?
+4. **Style check:** Run through the blocklist
 
-## 跨平台禁止项
+## Cross-Platform Blocklist
 
-- em dash（—）在正文中使用
+- Em dashes in body text
 - "Thanks for your contribution" / "Thank you for reporting this"
 - "Great catch" / "Great question" / "Appreciate the detailed report"
-- "the clearest/strongest/best [X] I've seen" — 最高级赞美
+- "the clearest/strongest/best [X] I've seen" (superlative praise)
 - "Feel free to..." / "Don't hesitate to..."
 - "Happy to discuss further" / "Let me know if you have questions"
 - "I'd love to hear your thoughts"
-- "I maintain [项目名]" 作为开头
-- 一条评论里 @多人分别提问
-- "Curious about..." / "I'd be interested to know..." — 暴露调研动机
-- 先感谢 → 再回答 → 再邀请参与的三段式结构
+- "I maintain [project name]" as an opener
+- @-mentioning multiple people with separate questions in one comment
+- "Curious about..." / "I'd be interested to know..." (reveals research intent)
+- The Thank → Answer → Invite three-part structure
 
-## 跨平台应该做到
+## Cross-Platform Dos
 
-- 信息密度高，没有填充句
-- 有观点，不只是描述
-- 直接说结论，不铺垫
-- 用缩写（doesn't, won't, btw, iirc, tbh）
-- 短。除非深度技术讨论，否则 2-5 句话
+- High information density, no filler sentences
+- Have an opinion, don't just describe
+- Lead with the conclusion, no preamble
+- Use contractions (doesn't, won't, btw, iirc, tbh)
+- Keep it short. 2-5 sentences unless deep technical discussion
 
-## 策略原则
+## Strategic Principles
 
-1. **沉默是武器** — 不回复 ≠ 输了
-2. **技术可信度是唯一护城河**
-3. **转化 > 辩护** — 精力花在可能用你产品的人身上
-4. **不解释动机** — 只回答真心问的人
-5. **不参与法律讨论**
+1. **Silence is a weapon** -- not replying ≠ losing
+2. **Technical credibility is the only moat**
+3. **Convert > Defend** -- spend energy on people who might use your product
+4. **Don't explain motives** -- only answer people who genuinely want to know
+5. **Don't engage in legal discussions**
 
 ---
 
-# 第二部分：GitHub 模式
+# Part 2: GitHub Mode
 
-## 输入
+## Input
 
-- Issue/PR 编号（如 #72）或链接
-- 直接粘贴的评论内容
-- 截图
+- Issue/PR number (e.g. #72) or link
+- Pasted comment content
+- Screenshot
 
-收到编号/链接后，先用 `gh` 命令读取 Issue/PR 正文和已有评论，理解完整上下文。
+After receiving a number/link, use `gh` commands to read the Issue/PR body and existing comments to understand the full context.
 
-## 分析流程
+## Workflow
 
-### 第一步：理解上下文
+### Step 1: Understand Context
 
-- Issue 还是 PR？Open / Closed / Merged？
-- 作者是外部用户还是自己？
-- 已有多少评论？最后一条说了什么？
-- 对方的核心诉求是什么？
-- **判断场景：自己 repo 还是外部 repo？**
+- Issue or PR? Open / Closed / Merged?
+- Is the author an external user or yourself?
+- How many comments exist? What does the last one say?
+- What is the other person's core ask?
+- **Assess context: your repo or external repo?**
 
-### 第二步：拟定回复
+### Step 2: Draft Reply
 
-输出可发送的文本。策略意图放在回复之后解释。
+Output sendable text. Put strategic reasoning after the reply.
 
-## GitHub 文风补充
+## GitHub Tone Guide
 
-- **像同事之间在 Slack 上聊天**
-- 可以省略主语。"Fixed in #77." 而不是 "This has been fixed in #77."
-- 技术问题用技术语言回答，不要降级解释
+- **Like coworkers chatting on Slack**
+- Drop subjects. "Fixed in #77." not "This has been fixed in #77."
+- Answer technical questions with technical language, don't dumb it down
 
-### 语感参考
+### Tone Examples
 
-**关闭 Issue：** `Fixed in #77.`
+**Closing an Issue:** `Fixed in #77.`
 
-**确认 Bug：** `Yeah this is real. Will add a per-agent semaphore.`
+**Confirming a Bug:** `Yeah this is real. Will add a per-agent semaphore.`
 
-**功能请求：** `Makes sense. Tracking in #XX.`
+**Feature Request:** `Makes sense. Tracking in #XX.`
 
-**追问用途：** `What's the use case driving this?`
+**Asking About Use Case:** `What's the use case driving this?`
 
-**Code review：** `Left a few comments. Main thing is [具体问题].`
+**Code Review:** `Left a few comments. Main thing is [specific issue].`
 
-**合并 PR：** `LGTM, merged.`
+**Merging a PR:** `LGTM, merged.`
 
-## GitHub 场景策略
+## GitHub Context Strategies
 
-### 自己 repo
+### Your Repo
 
-| 场景 | 策略 |
-|------|------|
-| 外部 Bug 报告 | 确认问题 + 修复计划/状态，可追问用途 |
-| 外部 PR（质量好） | 实质性技术反馈，合并后可追问用途 |
-| 外部 PR（质量差） | 指出具体问题，不模糊鼓励 |
-| 功能请求 | 判断是否做 → 说结论 → 关联 tracking issue |
-| 重复贡献者 | 可追问用途，不过度热情 |
-| 无意义 Issue | 关闭，一句话说原因 |
+| Scenario | Strategy |
+|----------|----------|
+| External bug report | Confirm the issue + fix plan/status, optionally ask about use case |
+| External PR (good quality) | Substantive technical feedback, can ask about use case after merge |
+| External PR (poor quality) | Point out specific problems, no vague encouragement |
+| Feature request | Decide yes/no, state conclusion, link to tracking issue |
+| Repeat contributor | Can ask about use case, don't be overly enthusiastic |
+| Low-value issue | Close with one sentence explaining why |
 
-### 外部 repo
+### External Repo
 
-禁止：
-- "I maintain [项目名]" 开场
-- 同一条评论 @两个以上的人分别提问
+Prohibited:
+- "I maintain [project name]" as an opener
+- @-mentioning more than two people with separate questions in one comment
 - "Curious about..." / "I'd be interested to know..."
 
-语感参考：
+Tone examples:
 
-不好：
+Bad:
 > I maintain open-multi-agent, a TS multi-agent framework.
 > We took a similar approach to what you're describing.
 > @alice I'm curious how you solved X?
 > @bob I'd also love to know about Y?
 
-好：
-> Same problem in a TS multi-agent orchestrator. [具体描述同类问题].
+Good:
+> Same problem in a TS multi-agent orchestrator. [describe the specific shared problem].
 > @alice how much effort did X take to build?
 
-### GitHub 实战案例
+### GitHub Real-World Examples
 
-**案例 1：关闭 Bug Issue + 追问用途（#72）**
+**Example 1: Closing a bug issue + asking about use case (#72)**
 
 > Fixed in #77.
 >
 > Good catch on the token budget interaction btw. What are you using this for? Would be useful to know.
 
-**案例 2：追问重复贡献者用途（#71）**
+**Example 2: Asking a repeat contributor about their use case (#71)**
 
 > Thanks for the second PR. What's the use case driving this?
 
-**案例 3：在 AutoGen issue 下参与讨论（microsoft/autogen#7487）**
+**Example 3: Joining a discussion under an AutoGen issue (microsoft/autogen#7487)**
 
 > Same problem in a TS multi-agent orchestrator. Coordinator handles decomposition and synthesis but nothing checks goal alignment in between. Blind spot by design.
 >
 > @msaleme how much engineering effort did the separate integrity node take to build and maintain? Wondering if this is a weekend project or a full team commitment.
 
-要点：第一段贡献经验，不自报家门。第二段问一个有信息价值的问题（workaround 代价量化）。
+Key points: First paragraph contributes experience without self-identification. Second paragraph asks one question with clear information value (quantifying the workaround cost).
 
-## GitHub 发送
+## GitHub Sending
 
-`gh issue comment` 或 `gh pr comment` 执行。
+Execute via `gh issue comment` or `gh pr comment`.
 
 ---
 
-# 第三部分：Reddit 模式
+# Part 3: Reddit Mode
 
-## 输入
+## Input
 
-- 直接粘贴的评论文本
-- 包含评论的文件路径
-- 截图
+- Pasted comment text
+- File path containing comments
+- Screenshot
 
-## 分析流程
+## Workflow
 
-### 第一步：分类每条评论
+### Step 1: Classify Each Comment
 
-| 类别 | 是否回复 | 判断标准 |
-|------|---------|---------|
-| 技术问题 | 回复 | 问了具体的实现、用法、架构问题 |
-| 真实用户反馈 | 回复 | 实际使用过产品 |
-| 定位/差异化问题 | 回复 | "这跟 X 有什么区别" |
-| 使用问题 | 回复 | 怎么装、怎么配置 |
-| 有利论据/类比 | 视情况 | 帮你说话的人，简短认可 |
-| 正面认可 | 视情况 | 热情的简短感谢，冷淡的跳过 |
-| 纯攻击/嘲讽 | 不回复 | 无具体内容 |
-| 法律/版权讨论 | 不回复 | 怎么说都错 |
-| 蹭帖推广 | 不回复 | 推广自己的项目 |
-| 玩梗/吃瓜 | 不回复 | 无实质内容 |
-| 跑题 | 不回复 | 无关 |
+| Category | Reply? | Criteria |
+|----------|--------|----------|
+| Technical question | Yes | Asks about specific implementation, usage, or architecture |
+| Real user feedback | Yes | Has actually used the product |
+| Positioning/differentiation question | Yes | "How is this different from X" |
+| Usage question | Yes | How to install, configure |
+| Favorable argument/analogy | Maybe | Someone backing you up; brief acknowledgment |
+| Positive recognition | Maybe | Enthusiastic ones get a short thanks, lukewarm ones skip |
+| Pure attack/mockery | No | No substantive content |
+| Legal/copyright discussion | No | Anything you say will be used against you |
+| Self-promotion piggyback | No | Promoting their own project |
+| Memes/spectating | No | No substantive content |
+| Off-topic | No | Irrelevant |
 
-### 第二步：拟定回复
-
-```
-#### u/用户名 (subreddit) 星级
-
-> 原始评论引用
-
-**建议回复：**
-> 回复内容
-
-**理由：** 策略意图
-```
-
-不回复的汇总到表格：
+### Step 2: Draft Replies
 
 ```
-| 用户 | 内容摘要 | 为什么不回 |
+#### u/username (subreddit) priority
+
+> Original comment quote
+
+**Suggested reply:**
+> Reply content
+
+**Rationale:** Strategic intent
 ```
 
-### 第三步：输出舆论小结
+Summarize no-reply decisions in a table:
 
-简要总结整体情绪、趋势、值得注意的信号。
+```
+| User | Content Summary | Why Not Reply |
+```
 
-## Reddit 文风补充
+### Step 3: Output Sentiment Summary
 
-Reddit 用户对 AI 文风极度敏感，以下规则在通用禁止项基础上额外适用：
+Brief summary of overall sentiment, trends, and notable signals.
 
-- 面面俱到地回应对方每一个论点 → 禁止（真人只挑一两个点）
-- 结构化列表回复简单问题 → 禁止（用自然段落）
-- 过度礼貌和正面 → 禁止（真人会有态度）
-- 允许口语化：nah, tbh, kinda, yeah, lol
-- 语气像在跟同行聊天
+## Reddit Tone Guide
 
-### Reddit 语感参考
+Reddit users are extremely sensitive to AI-generated text. These rules apply on top of the universal blocklist:
 
-不好（AI 味）：
-> Great question. The framework uses namespaced keys for SharedMemory, so each agent writes to its own namespace — no cross-agent write conflicts. Reads are global. Would love to hear your thoughts on this approach.
+- Addressing every single point the other person made: prohibited (real people pick one or two)
+- Structured bullet lists for simple questions: prohibited (use natural paragraphs)
+- Excessively polite and positive: prohibited (real people have attitude)
+- Casual language allowed: nah, tbh, kinda, yeah, lol
+- Tone should sound like chatting with a peer
 
-好（人味）：
+### Reddit Tone Examples
+
+Bad (AI smell):
+> Great question. The framework uses namespaced keys for SharedMemory, so each agent writes to its own namespace -- no cross-agent write conflicts. Reads are global. Would love to hear your thoughts on this approach.
+
+Good (human):
 > SharedMemory is namespaced per agent, so writes don't conflict. Reads are global though. Closest to single-writer-per-namespace if you want a label for it.
 
-不好（AI 味）：
-> Appreciate the honest feedback. Local model compatibility is still rough — tool-calling format varies a lot across models. If you have specific errors, happy to look into it.
+Bad (AI smell):
+> Appreciate the honest feedback. Local model compatibility is still rough -- tool-calling format varies a lot across models. If you have specific errors, happy to look into it.
 
-好（人味）：
+Good (human):
 > yeah local model support is still rough tbh. tool-calling format varies a lot between models and that's where it breaks. if you hit specific errors feel free to open an issue, would be useful to know what breaks first.
 
 ---
 
-# 第四部分：Twitter/X 模式
+# Part 4: Twitter/X Mode
 
-## Twitter 文风补充
+## Twitter Tone Guide
 
-- 280 字符限制，极致精简
-- 可以用 thread 但每条都要独立有信息量
-- 语气比 Reddit 更随意
-- 可以用 emoji 但不过度
-- 不要 hashtag spam
+- 280 character limit, extreme brevity
+- Threads are fine but each tweet must stand alone with information value
+- More casual than Reddit
+- Emoji OK but don't overdo it
+- No hashtag spam
 
 ---
 
-# 第五部分：通用模式
+# Part 5: General Mode
 
-当平台不在上述列表中（HN、Discord、论坛等），套用第一部分的通用原则 + 以下补充：
+When the platform isn't listed above (HN, Discord, forums, etc.), apply Part 1 universal principles plus:
 
-- HN：极度重视技术深度，不容忍任何推销感。比 Reddit 更克制
-- Discord：最随意，可以用表情反应代替文字回复
-- 论坛：视具体社区文化调整
+- HN: Extreme emphasis on technical depth. Zero tolerance for anything that smells like promotion. More restrained than Reddit
+- Discord: Most casual. Emoji reactions can replace text replies
+- Forums: Adjust to each community's specific culture
 
-## 发送
+## Sending
 
-拟好文案 → 完成发送前 4 步检查 → 询问用户是否发送 → 确认后执行。
+Draft complete -> Run the 4-step pre-send checklist -> Ask the user whether to send -> Execute after confirmation.
