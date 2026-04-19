@@ -40,20 +40,25 @@ The skill maintains a detailed blocklist of phrases and patterns that scream "AI
 
 ## Installation
 
-Two versions available:
+### Option 1: `npx skills add` (recommended)
 
-- `skill.md` -- English
-- `skill-zh.md` -- Chinese (中文版)
+Works with Claude Code, Codex, Cursor, GitHub Copilot, OpenCode, and other agents supported by [Vercel's skills CLI](https://github.com/vercel-labs/skills):
 
 ```bash
-# macOS / Linux
-mkdir -p ~/.claude/skills/silevy-reply
+npx skills add JackChen-me/silevy-reply
+```
 
+### Option 2: Manual install
+
+Two versions available: `skill.md` (English) and `skill-zh.md` (Chinese / 中文版).
+
+```bash
 # English version
-cp skill.md ~/.claude/skills/silevy-reply/skill.md
+git clone https://github.com/JackChen-me/silevy-reply.git ~/.claude/skills/silevy-reply
 
-# Or Chinese version (中文版)
-cp skill-zh.md ~/.claude/skills/silevy-reply/skill.md
+# Or Chinese version (中文版) — rename skill-zh.md to skill.md
+mkdir -p ~/.claude/skills/silevy-reply
+curl -o ~/.claude/skills/silevy-reply/skill.md https://raw.githubusercontent.com/JackChen-me/silevy-reply/main/skill-zh.md
 ```
 
 Then use it in Claude Code by typing `/silevy-reply` followed by the content you want to reply to.

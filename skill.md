@@ -45,12 +45,13 @@ Cross-platform reply/comment drafting. Auto-routes to the correct platform rules
 - **Give them an easy out.** "No worries if not"
 - **Async over calls.** Higher reply rate
 
-## Pre-Send Checklist (4 Steps, Required Every Time)
+## Pre-Send Checklist (5 Steps, Required Every Time)
 
 1. **Intent check:** What information does this comment aim to get? What's the concrete use for us? If you can't answer, rewrite
 2. **Fact check:** Verify your own project's technical claims against code; verify quotes against originals
 3. **Smell check:** Re-read from the recipient's perspective. Does it read like competitive research? Like AI? Or like someone who naturally ran into the same problem?
 4. **Style check:** Run through the blocklist
+5. **Compression check:** Can you cut an entire paragraph? Can bullets collapse into prose? Did you restate something the other person already said clearly? When in doubt, cut
 
 ## Cross-Platform Blocklist
 
@@ -64,7 +65,9 @@ Cross-platform reply/comment drafting. Auto-routes to the correct platform rules
 - "I maintain [project name]" as an opener
 - @-mentioning multiple people with separate questions in one comment
 - "Curious about..." / "I'd be interested to know..." (reveals research intent)
-- The Thank → Answer → Invite three-part structure
+- Any three-part structure. Not just Thank → Answer → Invite, but also: Confirm problem → Restate solution → List asks, Acknowledge → Explain → Close. More than 2 paragraphs in a single comment is a red flag
+- Using a bullet list for 2-3 short asks. Real people inline them into a sentence of prose. Bullets only make sense for 4+ independent complex items
+- Restating what the other person already said clearly. If they wrote out a solution, don't come back with "you're right, the approach is..." Just move to the next step
 
 ## Cross-Platform Dos
 
@@ -72,7 +75,7 @@ Cross-platform reply/comment drafting. Auto-routes to the correct platform rules
 - Have an opinion, don't just describe
 - Lead with the conclusion, no preamble
 - Use contractions (doesn't, won't, btw, iirc, tbh)
-- Keep it short. 2-5 sentences unless deep technical discussion
+- Keep it short. Default is 1-2 sentences. Past 3 sentences, ask yourself: can I cut a paragraph? Past 2 bullets, ask yourself: can these collapse into prose? Only open up the length budget for deep technical discussion
 
 ## Strategic Principles
 
@@ -180,6 +183,22 @@ Good:
 
 Key points: First paragraph contributes experience without self-identification. Second paragraph asks one question with clear information value (quantifying the workaround cost).
 
+**Example 4: Feature request + inviting a PR (#124)**
+
+Bad (three-part AI smell: confirm problem → restate solution → list asks):
+> Real gap. `onTrace` shows a tool ran but not what went in/out, so debugging means digging into model server logs.
+>
+> Proposal looks right: add `input: Record<string, unknown>` and `output: string` to `ToolCallTrace`, pass them in `emitTrace`. Mirrors what `ToolCallRecord` already exposes.
+>
+> Want to send a PR? Two asks if you do:
+> - Keep both fields required, no opt-in flag
+> - Add assertions in `tests/trace.test.ts` covering success and error cases
+
+Good (real maintainer):
+> Makes sense. Want to PR this? Just add coverage in `tests/trace.test.ts` for both success and error.
+
+Key points: The submitter already spelled out the change, so don't restate the problem or the solution. Just agree, invite the PR, and inline one constraint. Multiple short constraints collapse into prose, no bullets needed.
+
 ## GitHub Sending
 
 Execute via `gh issue comment` or `gh pr comment`.
@@ -283,4 +302,4 @@ When the platform isn't listed above (HN, Discord, forums, etc.), apply Part 1 u
 
 ## Sending
 
-Draft complete -> Run the 4-step pre-send checklist -> Ask the user whether to send -> Execute after confirmation.
+Draft complete -> Run the 5-step pre-send checklist -> Ask the user whether to send -> Execute after confirmation.

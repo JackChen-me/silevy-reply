@@ -51,6 +51,7 @@ description: >
 2. **事实核查：** 自己项目的技术声明对照代码验证；引用别人的话对照原文验证
 3. **味道检查：** 以收件人视角重读。像竞品调研？像 AI？还是像遇到同样问题的人自然留言？
 4. **文风检查：** 过一遍禁止项清单
+5. **压缩检查：** 能不能砍掉一整段？bullets 能不能 inline 成 prose？对方已经说清楚的内容有没有被你复述？不确定就砍
 
 ## 跨平台禁止项
 
@@ -64,7 +65,9 @@ description: >
 - "I maintain [项目名]" 作为开头
 - 一条评论里 @多人分别提问
 - "Curious about..." / "I'd be interested to know..." — 暴露调研动机
-- 先感谢 → 再回答 → 再邀请参与的三段式结构
+- 任何三段式结构。不止 thanks → answer → invite，还包括：confirm 问题 → 复述方案 → 列 asks、acknowledge → explain → close。一条评论超过 2 段就要警觉
+- 用 bullet list 列 2-3 个简短要点。真人会 inline 成一句 prose。bullets 只给 4+ 个独立复杂项才合理
+- 复述对方已经说清楚的内容。对方写了方案就别再"你说得对，方案是..."，直接进入下一步
 
 ## 跨平台应该做到
 
@@ -72,7 +75,7 @@ description: >
 - 有观点，不只是描述
 - 直接说结论，不铺垫
 - 用缩写（doesn't, won't, btw, iirc, tbh）
-- 短。除非深度技术讨论，否则 2-5 句话
+- 短。默认 1-2 句。超过 3 句先问自己：能不能砍一段？超过 2 条 bullet 先问自己：能不能合并成 prose？只有深度技术讨论才放开长度
 
 ## 策略原则
 
@@ -180,6 +183,22 @@ description: >
 
 要点：第一段贡献经验，不自报家门。第二段问一个有信息价值的问题（workaround 代价量化）。
 
+**案例 4：功能请求 + 邀请 PR（#124）**
+
+不好（三段式 AI 味：confirm 问题 → 复述方案 → 列 asks）：
+> Real gap. `onTrace` shows a tool ran but not what went in/out, so debugging means digging into model server logs.
+>
+> Proposal looks right: add `input: Record<string, unknown>` and `output: string` to `ToolCallTrace`, pass them in `emitTrace`. Mirrors what `ToolCallRecord` already exposes.
+>
+> Want to send a PR? Two asks if you do:
+> - Keep both fields required, no opt-in flag
+> - Add assertions in `tests/trace.test.ts` covering success and error cases
+
+好（真 maintainer）：
+> Makes sense. Want to PR this? Just add coverage in `tests/trace.test.ts` for both success and error.
+
+要点：对方已经写清楚要改什么，就别再"确认问题 + 复述方案"，直接同意 + 邀请 PR + 一个 inline 约束。多个短约束 inline 成 prose，不用 bullet。
+
 ## GitHub 发送
 
 `gh issue comment` 或 `gh pr comment` 执行。
@@ -283,4 +302,4 @@ Reddit 用户对 AI 文风极度敏感，以下规则在通用禁止项基础上
 
 ## 发送
 
-拟好文案 → 完成发送前 4 步检查 → 询问用户是否发送 → 确认后执行。
+拟好文案 → 完成发送前 5 步检查 → 询问用户是否发送 → 确认后执行。
